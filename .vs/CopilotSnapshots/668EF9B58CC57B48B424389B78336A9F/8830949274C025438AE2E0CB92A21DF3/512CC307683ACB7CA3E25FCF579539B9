@@ -1,0 +1,341 @@
+﻿# PGPortfolio - Windows 用户完全安装指南
+
+## ?? 欢迎使用 PGPortfolio！
+
+这是一个基于深度强化学习的自动投资组合管理框架，支持实时交易（OKX 交易所）。
+
+## ? 超快速开始（3 个步骤）
+
+### 第 1 步：双击运行配置脚本
+
+在 `PGPortfolio-master` 文件夹中，**双击**：
+```
+setup_environment.bat
+```
+
+### 第 2 步：等待完成
+
+脚本会自动：
+- ? 检查 Python 环境
+- ? 验证所有依赖（requests, torch 等）
+- ? 诊断系统配置
+- ? 创建必要的文件夹
+
+### 第 3 步：运行第一个命令
+
+在命令行或 PowerShell 中运行：
+```cmd
+cd PGPortfolio-master
+python main.py --mode download_data
+```
+
+**完成！** ??
+
+---
+
+## ?? 详细指南
+
+### 如果不想用配置脚本？
+
+手动运行以下步骤：
+
+```cmd
+# 1. 进入项目目录
+cd PGPortfolio-master
+
+# 2. 验证 requests 已安装
+python verify_requests.py
+
+# 3. 诊断系统
+python diagnose_setup.py
+
+# 4. 下载数据
+python main.py --mode download_data
+
+# 5. 生成训练包
+python main.py --mode generate --repeat 1
+
+# 6. 开始训练
+python main.py --mode train --processes 1
+```
+
+---
+
+## ?? 常见工作流
+
+### 工作流 1??：数据下载 + 训练 + 回测
+
+```cmd
+# 步骤 1: 下载市场数据（必须先做）
+python main.py --mode download_data
+
+# 步骤 2: 生成 1 个训练包
+python main.py --mode generate --repeat 1
+
+# 步骤 3: 训练模型（首次可能 5-30 分钟）
+python main.py --mode train --processes 1
+
+# 步骤 4: 回测查看效果
+python main.py --mode backtest --algo 1
+
+# 步骤 5: 绘制对比图表
+python main.py --mode plot --algos crp,olmar,1 --labels "CRP,OLMAR,My_Model"
+```
+
+### 工作流 2??：快速原型测试
+
+```cmd
+# 快速生成训练包（很小的数据集，30 秒完成）
+# 编辑 pgportfolio/net_config.json:
+# - 改 "coin_number": 3
+# - 改 "steps": 2000
+
+python main.py --mode generate --repeat 1
+python main.py --mode train --processes 1
+python main.py --mode backtest --algo 1
+```
+
+### 工作流 3??：使用 GPU 加速训练
+
+```cmd
+# 检查是否有 NVIDIA GPU
+nvidia-smi
+
+# 使用 GPU 训练（快 5-10 倍）
+python main.py --mode train --device gpu
+```
+
+### 工作流 4??：OKX 模拟交易
+
+```cmd
+# 在模拟盘进行纸质交易测试
+python main.py --mode trade --algo 1 --paper-trading
+
+# 使用 OKX 模拟盘
+python main.py --mode trade --algo 1 --paper-trading --okx-simulated
+```
+
+---
+
+## ?? 配置修改指南
+
+编辑 `pgportfolio/net_config.json` 来调整参数：
+
+### 更改币种和时间范围
+
+```json
+{
+  "input": {
+    "coin_number": 5,              // 交易 5 种币
+    "global_period": 3600,         // 1 小时周期
+    "start_date": "2024/01/01",    // 从 2024 年 1 月开始
+    "end_date": "2024/12/31",      // 到 2024 年 12 月结束
+    "market": "okx"                // 使用 OKX 数据源
+  }
+}
+```
+
+### 调整训练参数
+
+```json
+{
+  "training": {
+    "steps": 50000,                // 少训练（快）
+    "learning_rate": 0.0001,       // 降低学习率（稳定）
+    "batch_size": 64               // 增加批大小（快）
+  }
+}
+```
+
+### 完整的快速原型配置
+
+```json
+{
+  "layers": [...],  // 保持默认
+  "training": {
+    "steps": 5000,
+    "learning_rate": 0.0002,
+    "batch_size": 32,
+    "buffer_biased": 5e-5,
+    "training_method": "Adam",
+    "loss_function": "loss_function6"
+  },
+  "input": {
+    "window_size": 10,
+    "coin_number": 3,
+    "global_period": 1800,
+    "feature_number": 3,
+    "test_portion": 0.2,
+    "online": true,
+    "start_date": "2024/09/01",
+    "end_date": "2024/12/31",
+    "volume_average_days": 20,
+    "market": "okx",
+    "database_file": "okx_data.db"
+  },
+  "trading": { ... }  // 保持默认
+}
+```
+
+---
+
+## ?? 文件结构说明
+
+运行后会生成的文件：
+
+```
+PGPortfolio-master/
+├── pgportfolio/
+│   ├── net_config.json          ← 编辑这个文件配置
+│   └── ...
+├── train_package/               ← 训练输出
+│   ├── 1/                       ← 第一个训练模型
+│   │   ├── netfile             ← 保存的权重
+│   │   ├── programlog          ← 训练日志
+│   │   └── tensorboard/        ← TensorBoard 数据
+│   ├── 2/
+│   └── train_summary.csv       ← 所有训练结果汇总
+├── database/                    ← 市场数据
+│   └── okx_data.db            ← SQLite 数据库
+└── ...
+```
+
+---
+
+## ?? 常见问题解决
+
+### ? 问题：运行后还是提示 "No module named 'requests'"
+
+**解决方案**：
+```cmd
+# 方法 1：使用配置脚本（推荐）
+setup_environment.bat
+
+# 方法 2：手动安装
+python -m pip install requests
+
+# 方法 3：使用 Anaconda 环境
+C:\Users\86132\anaconda3\python.exe -m pip install requests
+```
+
+### ? 问题：数据下载超时或网络错误
+
+**解决方案**：
+1. 检查网络连接
+2. 在 `net_config.json` 中改为离线模式：
+   ```json
+   "online": false
+   ```
+3. 等待网络恢复后重试
+
+### ? 问题：训练太慢
+
+**解决方案**：
+1. 减少币种数或时间步数
+2. 使用 GPU：`--device gpu`
+3. 减少训练步数：改 `"steps": 20000`
+
+### ? 问题：OKX API 连接失败
+
+**检查清单**：
+- [ ] 网络连接正常
+- [ ] API 密钥输入正确
+- [ ] 使用了 `--paper-trading` 模式进行测试
+- [ ] 查看 `base_url` 是否正确
+
+### ? 问题：不知道 GPU 是否支持
+
+**检查方法**：
+```cmd
+# 检查是否有 NVIDIA GPU
+nvidia-smi
+
+# 如果输出显示 GPU 信息，则支持 GPU 训练
+python main.py --mode train --device gpu
+```
+
+---
+
+## ?? 深入学习
+
+### 快速参考
+查看 `QUICK_START.md` 获得常用命令速查表
+
+### 完整文档
+查看 `ENVIRONMENT_SETUP.md` 获得详细的配置说明
+
+### 诊断工具
+```cmd
+# 诊断系统配置
+python diagnose_setup.py
+
+# 验证 requests 库
+python verify_requests.py
+```
+
+### 查看 TensorBoard（训练过程可视化）
+
+```cmd
+tensorboard --logdir=train_package\1
+```
+然后在浏览器打开 `http://localhost:6006`
+
+---
+
+## ?? 安全建议（关于实时交易）
+
+### ?? 重要：先用模拟盘测试！
+
+```cmd
+# 安全：使用纸质交易测试（推荐）
+python main.py --mode trade --algo 1 --paper-trading
+
+# 更安全：使用 OKX 模拟盘（推荐）
+python main.py --mode trade --algo 1 --paper-trading --okx-simulated
+```
+
+### ??? API 密钥安全
+
+**不要**在 `net_config.json` 中写入真实密钥！使用环境变量：
+
+```cmd
+# 设置环境变量
+set OKX_API_KEY=your_key_here
+set OKX_API_SECRET=your_secret_here
+set OKX_PASSPHRASE=your_passphrase_here
+
+# 运行程序（会自动读取环境变量）
+python main.py --mode trade --algo 1
+```
+
+### ?? 风险声明
+
+- 过去的表现不代表未来结果
+- 市场效率可能已发生变化
+- 部署前充分测试
+- 交易有风险，请谨慎！
+
+---
+
+## ?? 下一步
+
+1. **运行** `setup_environment.bat` 完成环境配置
+2. **执行** `python main.py --mode download_data` 下载数据
+3. **查看** `QUICK_START.md` 了解常用命令
+4. **阅读** `ENVIRONMENT_SETUP.md` 深入学习配置
+5. **开始** 你的第一个训练！
+
+---
+
+## ?? 提示
+
+- 使用 VS Code 或 PyCharm 可以获得更好的开发体验
+- 定期检查 `train_package/train_summary.csv` 以跟踪训练进展
+- 修改参数后记得重新生成训练包
+- 使用 `--repeat` 参数创建多个训练运行，找到最佳参数
+
+---
+
+**祝你使用愉快！** ??
+
+如有问题，请查阅文档或检查日志文件：`train_package/1/programlog`

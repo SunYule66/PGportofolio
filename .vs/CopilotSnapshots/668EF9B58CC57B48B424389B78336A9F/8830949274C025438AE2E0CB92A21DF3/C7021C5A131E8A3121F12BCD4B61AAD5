@@ -1,0 +1,282 @@
+﻿from __future__ import absolute_import
+# Pillow >=10 removed Image.ANTIALIAS; keep alias for legacy codepaths
+try:
+    from PIL import Image as _PIL_Image
+    if not hasattr(_PIL_Image, "ANTIALIAS"):
+        try:
+            _PIL_Image.ANTIALIAS = _PIL_Image.Resampling.LANCZOS
+        except Exception:
+            # Older alias fallback
+            _PIL_Image.ANTIALIAS = _PIL_Image.LANCZOS
+except Exception:
+    pass
+import json
+import logging
+import os
+import sys
+import time
+from argparse import ArgumentParser
+from datetime import datetime
+from glob import glob
+
+# Verify required dependencies on startup
+def _verify_dependencies():
+    """Verify that all required dependencies are available."""
+    missing = []
+    try:
+        import requests
+    except ImportError:
+        missing.append('requests')
+    
+    if missing:
+        print("ERROR: Missing required dependencies:", ", ".join(missing))
+        print("Please run: python -m pip install requests")
+        sys.exit(1)
+
+_verify_dependencies()
+
+from pgportfolio.tools.configprocess import preprocess_config
+from pgportfolio.tools.configprocess import load_config
+
+
+def build_parser():
+    parser = ArgumentParser()
+    parser.add_argument("--mode",dest="mode",
+                        help="start mode, train, generate, download_data"
+                             " backtest",
+                        metavar="MODE", default="download_data")
+    parser.add_argument("--processes", dest="processes",
+                        help="number of processes you want to start to train the network",
+                        default="1")
+    parser.add_argument("--repeat", dest="repeat",
+                        help="repeat times of generating training subfolder",
+                        default="1")
+    parser.add_argument("--algo",
+                        help="algo name or indexes of training_package ",
+                        dest="algo", default="1")
+    parser.add_argument("--algos",
+                        help="algo names or indexes of training_package, seperated by \",\"",
+                        dest="algos", default="crp,best,1,bcrp")
+    parser.add_argument("--labels", dest="labels",
+                        help="names that will shown in the figure caption or table header")
+    parser.add_argument("--format", dest="format", default="raw",
+                        help="format of the table printed")
+    parser.add_argument("--device", dest="device", default="cpu",
+                        help="device to be used to train")
+    parser.add_argument("--folder", dest="folder", type=int,
+                        help="folder(int) to load the config, neglect this option if loading from ./pgportfolio/net_config")
+    parser.add_argument("--trade-provider", dest="trade_provider",
+                        help="override trading.provider for live trading", default=None)
+    parser.add_argument("--trade-steps", dest="trade_steps", type=int,
+                        help="override trading.live_steps for live trading", default=None)
+
+    paper_group = parser.add_mutually_exclusive_group()
+    paper_group.add_argument(
+        "--paper-trading",
+        dest="paper_trading",
+        action="store_true",
+        default=None,
+        help="force paper trading mode even if a real provider is configured",
+    )
+    paper_group.add_argument(
+        "--live-trading",
+        dest="paper_trading",
+        action="store_false",
+        default=None,
+        help="disable paper trading safeguards (use with caution)",
+    )
+
+    sim_group = parser.add_mutually_exclusive_group()
+    sim_group.add_argument(
+        "--okx-simulated",
+        dest="okx_use_simulated",
+        action="store_true",
+        default=None,
+        help="set OKX REST client to simulated trading endpoints",
+    )
+    sim_group.add_argument(
+        "--okx-real",
+        dest="okx_use_simulated",
+        action="store_false",
+        default=None,
+        help="force OKX REST client to real trading endpoints",
+    )
+
+    parser.add_argument("--okx-api-key", dest="okx_api_key",
+                        help="directly pass the OKX API key for live trading", default=None)
+    parser.add_argument("--okx-api-secret", dest="okx_api_secret",
+                        help="directly pass the OKX API secret for live trading", default=None)
+    parser.add_argument("--okx-passphrase", dest="okx_passphrase",
+                        help="directly pass the OKX passphrase for live trading", default=None)
+    parser.add_argument("--okx-td-mode", dest="okx_td_mode",
+                        choices=["cash", "cross", "isolated"],
+                        help="override OKX tdMode when sending orders", default=None)
+    parser.add_argument("--okx-base-url", dest="okx_base_url",
+                        help="override OKX REST base URL (useful for regional endpoints)", default=None)
+    parser.add_argument("--okx-timeout", dest="okx_timeout", type=float,
+                        help="override OKX REST timeout (seconds)", default=None)
+    return parser
+
+
+def main():
+    parser = build_parser()
+    options = parser.parse_args()
+    if not os.path.exists("./" + "train_package"):
+        os.makedirs("./" + "train_package")
+    if not os.path.exists("./" + "database"):
+        os.makedirs("./" + "database")
+
+    if options.mode == "train":
+        # Training requires PyTorch; keep imports local to avoid importing
+        # heavy ML dependencies when not needed (e.g. download_data mode).
+        import pgportfolio.autotrain.training
+        # In train mode, if no specific folder is provided, train all packages.
+        # The previous logic incorrectly iterated over options.folder even when it
+        # was None, causing a TypeError. For now we only support the common
+        # "train all" workflow; per-folder training can be added later if needed.
+        if options.folder is None:
+            pgportfolio.autotrain.training.train_all(int(options.processes), options.device)
+        else:
+            raise NotImplementedError("Per-folder training is not implemented yet. "
+                                      "Please omit --folder to train all packages.")
+    elif options.mode == "generate":
+        import pgportfolio.autotrain.generate as generate
+        logging.basicConfig(level=logging.INFO)
+        generate.add_packages(load_config(), int(options.repeat))
+    elif options.mode == "download_data":
+        from pgportfolio.marketdata.datamatrices import DataMatrices
+        with open("./pgportfolio/net_config.json") as file:
+            config = json.load(file)
+        config = preprocess_config(config)
+        start = time.mktime(datetime.strptime(config["input"]["start_date"], "%Y/%m/%d").timetuple())
+        end = time.mktime(datetime.strptime(config["input"]["end_date"], "%Y/%m/%d").timetuple())
+        DataMatrices(start=start,
+                     end=end,
+                     market=config["input"]["market"],
+                     feature_number=config["input"]["feature_number"],
+                     window_size=config["input"]["window_size"],
+                     online=config["input"]["online"],
+                     period=config["input"]["global_period"],
+                     volume_average_days=config["input"]["volume_average_days"],
+                     coin_filter=config["input"]["coin_number"],
+                     is_permed=config["input"]["is_permed"],
+                     test_portion=config["input"]["test_portion"],
+                     portion_reversed=config["input"]["portion_reversed"])
+    elif options.mode == "backtest":
+        # Import backtest helper lazily to avoid importing trading/learning
+        # stack (and thus torch) when not actually running a backtest.
+        from pgportfolio.tools.shortcut import execute_backtest
+        config = _config_by_algo(options.algo)
+        _set_logging_by_algo(logging.DEBUG, logging.DEBUG, options.algo, "backtestlog")
+        execute_backtest(options.algo, config)
+    elif options.mode == "save_test_data":
+        from pgportfolio.tools.trade import save_test_data
+        # This is used to export the test data
+        save_test_data(load_config(options.folder))
+    elif options.mode == "trade":
+        from pgportfolio.tools.shortcut import _construct_agent
+        from pgportfolio.trade.okx_trader import OkxTrader
+
+        config = _config_by_algo(options.algo)
+        trading_cfg = config.setdefault("trading", {})
+
+        if options.trade_provider:
+            trading_cfg["provider"] = options.trade_provider
+        if options.trade_steps is not None:
+            trading_cfg["live_steps"] = max(0, options.trade_steps)
+        if options.paper_trading is not None:
+            trading_cfg["paper_trading"] = options.paper_trading
+        if options.okx_use_simulated is not None:
+            trading_cfg["use_simulated"] = options.okx_use_simulated
+        if options.okx_td_mode:
+            trading_cfg["td_mode"] = options.okx_td_mode
+        if options.okx_base_url:
+            trading_cfg["base_url"] = options.okx_base_url
+        if options.okx_timeout is not None:
+            trading_cfg["timeout"] = options.okx_timeout
+
+        if options.okx_api_key:
+            trading_cfg["api_key"] = options.okx_api_key
+        if options.okx_api_secret:
+            trading_cfg["api_secret"] = options.okx_api_secret
+        if options.okx_passphrase:
+            trading_cfg["passphrase"] = options.okx_passphrase
+
+        agent, agent_type, net_dir = _construct_agent(options.algo)
+        if agent_type != "nn":
+            raise ValueError("Live trading currently supports NN-based agents only.")
+
+        _set_logging_by_algo(logging.INFO, logging.INFO, options.algo, "tradelog")
+        trader = OkxTrader(
+            config=config,
+            net_dir=net_dir,
+            agent=agent,
+            total_steps=config["trading"].get("live_steps"),
+            device=options.device,
+        )
+        trader.start_trading()
+    elif options.mode == "plot":
+        from pgportfolio.resultprocess import plot
+        logging.basicConfig(level=logging.INFO)
+        if not options.algos:
+            algos = _list_available_algos()
+        else:
+            algos = options.algos.split(",")
+        if options.labels:
+            labels = options.labels.replace("_"," ")
+            labels = labels.split(",")
+        else:
+            labels = algos
+        plot.plot_backtest(load_config(), algos, labels)
+    elif options.mode == "table":
+        from pgportfolio.resultprocess import plot
+        if not options.algos:
+            algos = _list_available_algos()
+        else:
+            algos = options.algos.split(",")
+        if options.labels:
+            labels = options.labels.replace("_"," ")
+            labels = labels.split(",")
+        else:
+            labels = algos
+        plot.table_backtest(load_config(), algos, labels, format=options.format)
+
+
+def _set_logging_by_algo(console_level, file_level, algo, name):
+    if algo.isdigit():
+            logging.basicConfig(filename="./train_package/"+algo+"/"+name,
+                                level=file_level)
+            console = logging.StreamHandler()
+            console.setLevel(console_level)
+            logging.getLogger().addHandler(console)
+    else:
+        logging.basicConfig(level=console_level)
+
+
+def _config_by_algo(algo):
+    """
+    :param algo: a string represent index or algo name
+    :return : a config dictionary
+    """
+    if not algo:
+        raise ValueError("please input a specific algo")
+    elif algo.isdigit():
+        config = load_config(algo)
+    else:
+        config = load_config()
+    return config
+
+
+def _list_available_algos():
+    """
+    Return the supported algorithm names used by the application
+    (canonical names, not raw module filenames).
+    """
+    supported = [
+        "crp", "ons", "olmar", "up", "anticor", "pamr", "best", "bk",
+        "bcrp", "corn", "m0", "rmr", "cwmr", "eg", "sp", "ubah", "wmamr",
+    ]
+    return supported
+
+if __name__ == "__main__":
+    main()

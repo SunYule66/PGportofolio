@@ -1,0 +1,117 @@
+﻿#!/usr/bin/env pwsh
+# ============================================
+# PGPortfolio - PowerShell 环境配置脚本
+# ============================================
+
+# 设置变量
+$PythonExe = "C:\Users\86132\anaconda3\python.exe"
+$ProjectRoot = Get-Location
+$PythonPath = "$ProjectRoot\PGPortfolio-master;$env:PYTHONPATH"
+
+# 颜色定义
+$SuccessColor = "Green"
+$ErrorColor = "Red"
+$WarningColor = "Yellow"
+$InfoColor = "Cyan"
+
+# 输出函数
+function Write-Step($Number, $Title) {
+    Write-Host ""
+    Write-Host "[$Number/4] $Title" -ForegroundColor $InfoColor
+    Write-Host ""
+}
+
+function Write-Success($Message) {
+    Write-Host "? $Message" -ForegroundColor $SuccessColor
+}
+
+function Write-Error-Custom($Message) {
+    Write-Host "? $Message" -ForegroundColor $ErrorColor
+}
+
+function Write-Info($Message) {
+    Write-Host "  $Message"
+}
+
+# 开始
+Clear-Host
+Write-Host ""
+Write-Host "============================================" -ForegroundColor $InfoColor
+Write-Host "   PGPortfolio 环境配置向导" -ForegroundColor $InfoColor
+Write-Host "============================================" -ForegroundColor $InfoColor
+Write-Host ""
+
+# 第一步：检查 Python
+Write-Step 1 "检查 Python 环境"
+
+if (-not (Test-Path $PythonExe)) {
+    Write-Error-Custom "找不到 Python: $PythonExe"
+    Write-Host "请确保 Anaconda 已正确安装在 C:\Users\86132\anaconda3"
+    Read-Host "按 Enter 键退出"
+    exit 1
+}
+
+$Version = & $PythonExe --version 2>&1
+Write-Info "Python 路径: $PythonExe"
+Write-Info $Version
+Write-Success "Python 环境检查通过"
+
+# 第二步：验证依赖
+Write-Step 2 "验证依赖"
+
+& $PythonExe PGPortfolio-master\verify_requests.py
+if ($LASTEXITCODE -ne 0) {
+    Write-Error-Custom "依赖验证失败"
+    Write-Host "请运行: python -m pip install requests"
+    Read-Host "按 Enter 键退出"
+    exit 1
+}
+
+# 第三步：诊断系统
+Write-Step 3 "诊断系统设置"
+& $PythonExe PGPortfolio-master\diagnose_setup.py
+
+# 第四步：创建目录
+Write-Step 4 "创建必要目录"
+
+$Dirs = @(
+    "PGPortfolio-master\database",
+    "PGPortfolio-master\train_package"
+)
+
+foreach ($Dir in $Dirs) {
+    if (-not (Test-Path $Dir)) {
+        New-Item -ItemType Directory -Path $Dir -Force | Out-Null
+        Write-Info "创建目录: $Dir"
+    }
+}
+
+Write-Success "所有目录已准备好"
+
+# 完成
+Write-Host ""
+Write-Host "============================================" -ForegroundColor $SuccessColor
+Write-Host "   ? 环境配置完成！" -ForegroundColor $SuccessColor
+Write-Host "============================================" -ForegroundColor $SuccessColor
+Write-Host ""
+
+Write-Host "现在可以运行以下命令：" -ForegroundColor $InfoColor
+Write-Host ""
+Write-Host "  1. 下载数据:" -ForegroundColor $InfoColor
+Write-Info "     python PGPortfolio-master\main.py --mode download_data"
+Write-Host ""
+Write-Host "  2. 生成训练包:" -ForegroundColor $InfoColor
+Write-Info "     python PGPortfolio-master\main.py --mode generate --repeat 1"
+Write-Host ""
+Write-Host "  3. 训练模型:" -ForegroundColor $InfoColor
+Write-Info "     python PGPortfolio-master\main.py --mode train --processes 1"
+Write-Host ""
+Write-Host "  4. 查看帮助:" -ForegroundColor $InfoColor
+Write-Info "     python PGPortfolio-master\main.py --help"
+Write-Host ""
+Write-Host "详见文档:" -ForegroundColor $InfoColor
+Write-Info "  - QUICK_START.md - 快速开始指南"
+Write-Info "  - ENVIRONMENT_SETUP.md - 完整配置指南"
+Write-Host ""
+
+Read-Host "按 Enter 键退出"

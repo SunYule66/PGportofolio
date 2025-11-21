@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.py",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\main.py",
+              "RelativeDocumentMoniker": "main.py",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\main.py",
+              "RelativeToolTip": "main.py",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARtSURBVDhPdZRbbFRFGMd/M2fPdrc32V5ohbLQJhgJKheJQk0EwQhiosYAPhnRxNgQgeADXiBKUEi8JVWUCoqBKpEYDRCBhAeDL8olIveA2JZCoLT0QqHb3XPOnDOfD9sakDgvk/km3y\u002B/\u002BSb5w/\u002BsRy6//\u002BKYji9bqy423Rj9d\u002BPCW\u002B8\u002BzCysfqVj8c5bawCIiPpv7dWrb\u002ByJipLzTnhlui10VSwMcY3BDcLthbaoYdGo3\u002BaUavv1N93lFQPOYLK9dqt3a78CWNfXcF9laHeVJKi7QLH6brCWTomhrcU1eWDchkwvvTI4ubC7qDNw\u002BfF6irmFN5/aNGbrvjuAn3Y1\u002BEZ0vDMDx9p8/nJShGiUCXFMRLm9yf3F3aTwSYrl95tFDBiH6o6O5v0rDi8H\u002Bm8DbuhqsNcjV7Wf66PlqwP0ZyB33cP4lriGAq0JghDjWQJfyKk4YRCR68sRDJjHgF//BX5xbUlxzjLQE8U5d7afns37WTD/NWoqa\u002Bnp6eDnfd/T2tpCVVkNi557idIRFWzb8S0HjxzCZAzhym1n7D1zprNoZAZAA9VZ65CzDj1hnCiw1E\u002BZRcuF04wdXcs7KxuJx5Ls3XmI9Jg6WtrbSI9OI5EQZkOcUWUT4xNKup2D2ecBYq1BYkpcWQatQ5\u002BJURQISgQi8DwPL\u002Bfx\u002BMxnaG9v4\u002BUli8n6ISJC5EXY0OI4GlUSS8QqnR3O8eyzOhKpylmHjjCBRggDAYH6h2bT0XGFVWuWc/z4UVKpcuIFhYysqKRubC0mG4LWjIz3Myt5EukNCC9mj\u002BlB3PFZcei1LrMSvUhosRaatjTySeNaLrS2c\u002BrUabbvaObwgT/Y88NeHpw0DSWCG1dsSX1EY3ID9nym31pns1p88c3mnKgXKhyDOnuJA2t\u002BwQssQdYivsF4gvFDPKDALSD0DcY3iAUrsHvXNB6eOZLxBzY29s1Pr9ChqPSNyMUXTadxCYzFDyAIhNAIJrAYI6hA8Adyt8FEBF80Fjg8Y/UNAG3QFZ5oLpkkXaYAzxeCQDAmwniWMIgQAbEytIMIIPlzDoUFapK9MwF0bxQr7IoKuGQSdAYuxoAXgHgW40d5k2HYEERk2BA8CxGKSMlUgNiVoOAuDw2AtRovgHVvrWfyvRMR8j8uwNx5s/OQfKjkLRHskGEkqlRkTpWqO/dBKFY5YjXm6CV6lzURDIYUFTpYkaF55QHDcxu2FBE27a5n7uxySpVQqmSVqj318VIr\u002Bl2xTrntN5iznRRjWDbuTwoQkliSQFJZXGz\u002BLQJG4LzEmTq5hHSZS6myFGOPKYD0yY0pR2feszbWgGhnTCxL07gjlOuQBKCVYEVhBAwKoxRHTJzWyKVaR1SriLt1RKUT\u002BrcFbPrM2omaxGcienYcxZODMRaMO2EnlV4LDCQ8UWTQDIim2S8ipSwTHMMIHQnC1UIJ374jsQFqz6x/OjLFn/tXxna5qdZHL9e/nstk5j3gO\u002B7SrPBEH07NIRPXaR31jXBZPSPxU9Nw7z/r7YcZEQc2bgAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-11-20T03:19:21.112Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

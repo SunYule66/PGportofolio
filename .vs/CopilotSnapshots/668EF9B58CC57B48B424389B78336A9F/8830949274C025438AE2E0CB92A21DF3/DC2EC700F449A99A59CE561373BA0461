@@ -1,0 +1,20 @@
+﻿@echo off
+REM This batch script runs PGPortfolio with the correct Anaconda Python and PYTHONPATH
+
+set PYTHONPATH=%CD%;%PYTHONPATH%
+set PYTHON_EXECUTABLE=C:\Users\86132\anaconda3\python.exe
+
+echo Using Python: %PYTHON_EXECUTABLE%
+echo PYTHONPATH: %PYTHONPATH%
+echo.
+
+if "%1"=="" (
+    echo Usage: run_pgportfolio.bat [args]
+    echo Example: run_pgportfolio.bat --mode download_data
+    echo.
+    %PYTHON_EXECUTABLE% main.py --mode download_data
+) else (
+    %PYTHON_EXECUTABLE% main.py %*
+)
+
+pause

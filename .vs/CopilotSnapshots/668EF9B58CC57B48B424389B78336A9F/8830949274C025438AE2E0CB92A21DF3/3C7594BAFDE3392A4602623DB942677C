@@ -1,0 +1,2 @@
+﻿# This file tells VS Code to use Anaconda Python
+PYTHONPATH=.

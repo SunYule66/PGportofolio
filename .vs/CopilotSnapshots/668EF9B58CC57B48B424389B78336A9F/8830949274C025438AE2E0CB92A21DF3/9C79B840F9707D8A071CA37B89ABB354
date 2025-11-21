@@ -1,0 +1,169 @@
+﻿# PGPortfolio 快速参考指南
+
+## ?? 第一次运行？按这个步骤做
+
+### 步骤 1??: 验证环境
+```cmd
+python diagnose_setup.py
+```
+应该看到所有项都是 ? PASS
+
+### 步骤 2??: 下载数据
+```cmd
+python main.py --mode download_data
+```
+等待完成（可能需要 5-30 分钟，取决于网络）
+
+### 步骤 3??: 生成训练包
+```cmd
+python main.py --mode generate --repeat 1
+```
+
+### 步骤 4??: 训练模型
+```cmd
+python main.py --mode train --processes 1
+```
+训练时间取决于 CPU/GPU 和参数配置
+
+### 步骤 5??: 查看结果
+打开 `train_package/train_summary.csv` 查看结果
+
+## ?? 常用命令速查
+
+| 命令 | 功能 | 说明 |
+|------|------|------|
+| `python main.py --mode download_data` | 下载市场数据 | 必须先运行一次 |
+| `python main.py --mode generate --repeat 1` | 生成训练包 | --repeat N 创建 N 个包 |
+| `python main.py --mode train --processes 1` | 训练模型 | --device gpu 用 GPU |
+| `python main.py --mode backtest --algo 1` | 回测模型 | 测试模型效果 |
+| `python main.py --mode plot --algos 1,crp` | 绘制对比图 | 对比不同算法 |
+| `python main.py --mode trade --algo 1 --paper-trading` | 模拟交易 | OKX 纸质交易 |
+
+## ?? 配置调整
+
+编辑 `pgportfolio/net_config.json`:
+
+### 基础配置
+```json
+{
+  "input": {
+    "coin_number": 11,         // 交易币种数
+    "window_size": 31,         // 时间步长
+    "global_period": 1800,     // 周期(秒)
+    "online": true,            // 在线下载
+    "start_date": "2024/11/18",
+    "end_date": "2025/11/18",
+    "market": "okx"            // 数据源
+  },
+  "training": {
+    "steps": 80000,            // 训练步数
+    "learning_rate": 0.00028,  // 学习率
+    "batch_size": 109          // 批大小
+  }
+}
+```
+
+## ?? TensorBoard 可视化
+
+训练过程中实时查看：
+```cmd
+tensorboard --logdir=train_package\1
+```
+然后在浏览器打开 `http://localhost:6006`
+
+## ?? 常见问题
+
+### Q: 还是报 requests 错误？
+A: 运行批处理脚本：`run_pgportfolio.bat`
+
+### Q: 数据下载失败？
+A: 在 `net_config.json` 中改 `"online": false`（需要先下载过一次）
+
+### Q: 训练太慢？
+A: 在命令行加 `--device gpu`（需要 NVIDIA GPU）
+
+### Q: 怎么用 OKX 交易所？
+A: 已默认配置，直接运行：
+```cmd
+python main.py --mode trade --algo 1 --paper-trading
+```
+
+## ?? 文件说明
+
+```
+train_package/
+  └─ 1/                  训练输出文件夹
+     ├─ programlog       训练日志
+     ├─ netfile         保存的模型权重
+     └─ tensorboard/    TensorBoard 数据
+
+database/
+  └─ okx_data.db        市场数据库（SQLite）
+```
+
+## ?? 推荐学习流程
+
+1. ? 运行 `download_data` 熟悉数据下载
+2. ? 修改 `net_config.json` 改变参数
+3. ? 运行 `generate` 生成训练包
+4. ? 运行 `train` 训练模型
+5. ? 运行 `backtest` 测试模型效果
+6. ? 运行 `plot` 对比算法表现
+7. ? 运行 `trade` 进行模拟交易
+8. ? 阅读论文理解算法原理
+
+## ?? 快速参数调优
+
+### 快速测试（2 分钟）
+```json
+"coin_number": 3,
+"steps": 2000,
+"batch_size": 32
+```
+
+### 正常训练（15-30 分钟）
+```json
+"coin_number": 10,
+"steps": 40000,
+"batch_size": 80
+```
+
+### 生产级别（1-2 小时）
+```json
+"coin_number": 20,
+"steps": 100000,
+"batch_size": 128
+```
+
+## ?? 保存和加载模型
+
+- 已训练的模型自动保存在 `train_package/{id}/netfile`
+- 回测和交易时自动加载相应模型
+
+## ?? 在线/离线模式
+
+**在线模式**（推荐新手）:
+```json
+"online": true
+```
+- 自动下载最新数据
+- 网络依赖性强
+- 数据更新
+
+**离线模式**:
+```json
+"online": false
+```
+- 使用本地数据库
+- 快速、可靠
+- 需要先下载过数据
+
+## ?? 获取帮助
+
+1. 运行 `python diagnose_setup.py` 诊断问题
+2. 查看 `ENVIRONMENT_SETUP.md` 完整文档
+3. 查看日志文件 `train_package/1/programlog`
+4. 查看 TensorBoard: `tensorboard --logdir=train_package\1`
+
+---
+**提示**: 右键点击本文件编辑，可以快速找到命令！

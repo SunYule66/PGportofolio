@@ -1,0 +1,378 @@
+﻿# PGPortfolio 环境配置指南
+
+## ?? 项目概述
+- **项目名称**: PGPortfolio - 深度强化学习投资组合管理框架
+- **Python 版本**: 3.5+ 或 3.10+（推荐 3.10+）
+- **主要依赖**: PyTorch (>=2.2), TensorBoard, Pandas, Requests
+
+## ? 已完成的设置
+
+### 1. 已安装的依赖
+```
+? requests           2.31.0   (HTTP API 调用)
+? torch              2.5.1    (深度学习框架)
+? pandas             2.3.3    (数据处理)
+? numpy              1.26.4   (数值计算)
+? tensorboard        2.20.0   (训练可视化)
+? PIL                11.0.0   (图像处理)
+```
+
+### 2. 已创建的启动脚本
+- `run_pgportfolio.bat` - Windows 批处理脚本
+- `run_pgportfolio.ps1` - PowerShell 脚本
+- `verify_requests.py` - 验证 requests 依赖
+- `diagnose_setup.py` - 诊断完整系统
+
+### 3. IDE 配置
+- `.vscode/settings.json` - VS Code 配置（指向 Anaconda Python）
+- `.env` - 环境变量配置
+
+## ?? 快速开始
+
+### 方式 1: 使用 Windows 批处理脚本（推荐）
+
+双击运行或在命令行执行：
+```cmd
+PGPortfolio-master\run_pgportfolio.bat
+```
+
+或带参数运行不同模式：
+```cmd
+PGPortfolio-master\run_pgportfolio.bat --mode train
+PGPortfolio-master\run_pgportfolio.bat --mode generate --repeat 1
+```
+
+### 方式 2: 使用 PowerShell
+
+```powershell
+.\PGPortfolio-master\run_pgportfolio.ps1 --mode download_data
+.\PGPortfolio-master\run_pgportfolio.ps1 --mode train --processes 1
+```
+
+### 方式 3: 直接使用 Anaconda Python
+
+```bash
+# 从项目目录运行
+C:\Users\86132\anaconda3\python.exe main.py --mode download_data
+```
+
+## ?? 运行模式说明
+
+### 1. 下载数据 (download_data) - 推荐先运行
+```bash
+python main.py --mode download_data
+```
+- 根据 `net_config.json` 配置下载市场数据
+- 在 `database/` 目录保存数据
+- 首次运行可能较慢
+
+### 2. 生成训练包 (generate)
+```bash
+python main.py --mode generate --repeat 1
+```
+- 创建 1 个训练文件夹到 `train_package/`
+- `--repeat N` 创建 N 个随机种子不同的训练包
+
+### 3. 训练模型 (train)
+```bash
+python main.py --mode train --processes 1
+```
+- 启动 1 个进程进行训练
+- `--processes N` 并行运行 N 个进程
+- `--device gpu` 使用 GPU 加速（如果可用）
+
+### 4. 回测 (backtest)
+```bash
+python main.py --mode backtest --algo 1
+```
+- 对已训练的模型进行回测
+- `--algo 1` 表示使用 `train_package/1` 中的模型
+
+### 5. 可视化结果 (plot)
+```bash
+python main.py --mode plot --algos crp,olmar,1 --labels "CRP,OLMAR,NN"
+```
+- 绘制不同算法的收益对比
+
+### 6. 表格输出 (table)
+```bash
+python main.py --mode table --algos 1,olmar,ons --format csv
+```
+- 输出回测结果的表格格式
+
+### 7. 实时交易 (trade) - OKX 交易所
+```bash
+python main.py --mode trade --algo 1 --paper-trading
+```
+- 使用 OKX 交易所进行纸质交易
+- `--live-trading` 开启真实交易（谨慎！）
+
+## ?? 配置文件说明
+
+### `pgportfolio/net_config.json`
+
+#### 输入配置 (input)
+```json
+{
+  "window_size": 31,           // 输入窗口大小（时间步数）
+  "coin_number": 11,           // 交易币种数量
+  "global_period": 1800,       // 时间周期（秒），应为 300 的倍数
+  "feature_number": 3,         // 特征数量：1=close, 2=close+volume, 3=close+high+low
+  "test_portion": 0.08,        // 测试集比例
+  "online": true,              // 是否在线下载数据
+  "start_date": "2024/11/18",  // 开始日期 (yyyy/MM/dd)
+  "end_date": "2025/11/18",    // 结束日期 (yyyy/MM/dd)
+  "volume_average_days": 30,   // 用于选币的平均成交量天数
+  "market": "okx",             // 数据源：poloniex 或 okx
+  "database_file": "okx_data.db" // 本地数据库文件名
+}
+```
+
+#### 训练配置 (training)
+```json
+{
+  "steps": 80000,              // 总训练步数
+  "learning_rate": 0.00028,    // 学习率
+  "batch_size": 109,           // 批大小
+  "buffer_biased": 5e-5,       // 经验回放缓冲偏差
+  "training_method": "Adam",   // 优化器：Adam, SGD 等
+  "loss_function": "loss_function6" // 损失函数类型
+}
+```
+
+#### 交易配置 (trading) - OKX
+```json
+{
+  "provider": "okx",           // 交易提供者
+  "paper_trading": true,       // 纸质交易模式
+  "use_simulated": true,       // 使用 OKX 模拟盘
+  "td_mode": "cash",           // 交易模式：cash/cross/isolated
+  "api_key": "",               // API 密钥（留空使用环境变量）
+  "api_secret": "",            // API 密钥
+  "passphrase": "",            // API 密码
+  "base_url": "https://www.okx.com", // OKX API 地址
+  "timeout": 10                // 请求超时（秒）
+}
+```
+
+## ?? 环境变量配置（用于生产环境）
+
+不推荐在配置文件中写入真实的 API 密钥。使用环境变量：
+
+### Windows 命令行
+```cmd
+set OKX_API_KEY=your_api_key
+set OKX_API_SECRET=your_api_secret
+set OKX_PASSPHRASE=your_passphrase
+python main.py --mode trade --algo 1
+```
+
+### PowerShell
+```powershell
+$env:OKX_API_KEY="your_api_key"
+$env:OKX_API_SECRET="your_api_secret"
+$env:OKX_PASSPHRASE="your_passphrase"
+python main.py --mode trade --algo 1
+```
+
+### Linux/macOS
+```bash
+export OKX_API_KEY="your_api_key"
+export OKX_API_SECRET="your_api_secret"
+export OKX_PASSPHRASE="your_passphrase"
+python main.py --mode trade --algo 1
+```
+
+## ?? 数据库文件
+
+- **位置**: `database/` 目录
+- **默认文件**: `okx_data.db` (SQLite 数据库)
+- **包含内容**: 历史价格、成交量、高低点等
+
+### 离线模式
+
+如果在线下载缓慢或失败，可以使用离线模式：
+
+1. 在 `net_config.json` 中设置 `"online": false`
+2. 确保 `database_file` 中的数据库已存在
+3. **警告**: 离线模式下不能修改 `start_date`, `end_date`, `coin_number` 等配置
+
+## ?? 项目结构
+
+```
+PGPortfolio-master/
+├── main.py                     # 主程序入口
+├── setup.py                    # 项目安装配置
+├── requirements.txt            # 依赖列表
+├── pgportfolio/
+│   ├── net_config.json        # 主配置文件
+│   ├── marketdata/            # 市场数据模块
+│   │   ├── poloniex.py        # 交易所适配器
+│   │   ├── okx.py             # OKX 交易所适配器
+│   │   └── datamatrices.py    # 数据矩阵处理
+│   ├── autotrain/             # 自动训练模块
+│   ├── trade/                 # 交易模块
+│   └── tools/                 # 工具函数
+├── train_package/             # 训练输出（自动创建）
+│   ├── 1/                     # 第 1 个训练包
+│   ├── train_summary.csv      # 训练结果汇总
+│   └── ...
+├── database/                  # 市场数据（自动创建）
+│   └── okx_data.db           # SQLite 数据库
+├── run_pgportfolio.bat        # Windows 启动脚本
+├── run_pgportfolio.ps1        # PowerShell 启动脚本
+├── verify_requests.py         # 依赖验证脚本
+└── diagnose_setup.py          # 系统诊断脚本
+```
+
+## ?? 故障排除
+
+### 问题 1: ModuleNotFoundError: No module named 'requests'
+
+**解决方案**:
+```bash
+# 使用 Anaconda Python
+C:\Users\86132\anaconda3\python.exe -m pip install requests
+
+# 或使用批处理脚本
+run_pgportfolio.bat
+```
+
+### 问题 2: 数据下载缓慢或超时
+
+**解决方案**:
+```json
+// 在 net_config.json 中：
+{
+  "input": {
+    "online": false,
+    "start_date": "2024/01/01",
+    "end_date": "2024/12/31"
+    // 使用现有数据库中的数据
+  }
+}
+```
+
+### 问题 3: GPU/CUDA 相关错误
+
+**解决方案**:
+```bash
+# 使用 CPU 模式运行训练
+python main.py --mode train --device cpu
+```
+
+### 问题 4: OKX API 连接失败
+
+**检查清单**:
+- ? 网络连接是否正常
+- ? API 密钥是否正确
+- ? 是否在 `paper_trading` 模式下测试
+- ? 是否使用了 `use_simulated` 模拟盘
+
+## ?? 工作流示例
+
+### 完整的从零开始流程
+
+```bash
+# 1. 验证环境
+python diagnose_setup.py
+
+# 2. 下载市场数据
+python main.py --mode download_data
+
+# 3. 生成训练包（3 个随机种子）
+python main.py --mode generate --repeat 3
+
+# 4. 并行训练（使用 2 个进程）
+python main.py --mode train --processes 2
+
+# 5. 查看训练汇总
+# 打开 train_package/train_summary.csv
+
+# 6. 对最佳模型进行回测
+python main.py --mode backtest --algo 1
+
+# 7. 绘制对比图表
+python main.py --mode plot --algos crp,olmar,1 --labels "CRP,OLMAR,NeuralNetwork"
+
+# 8. 生成表格报告
+python main.py --mode table --algos 1 --format csv
+
+# 9. 在模拟盘测试（纸质交易）
+python main.py --mode trade --algo 1 --paper-trading
+```
+
+## ?? 重要提示
+
+### 关于实时交易
+- 生产环境必须先在 `paper_trading` 或 `use_simulated` 模式下充分测试
+- **不要将真实 API 密钥提交到版本控制系统**
+- 建议使用环境变量存储敏感信息
+- 了解 OKX 的费用结构和风险
+
+### 关于历史数据
+- 不同时间段的市场效率差异很大
+- 过去表现不代表未来结果
+- 算法可能需要根据市场条件定期调整
+
+## ?? 常见配置调优
+
+### 快速原型测试
+```json
+{
+  "input": {
+    "coin_number": 3,
+    "window_size": 10,
+    "test_portion": 0.2
+  },
+  "training": {
+    "steps": 5000,
+    "batch_size": 32
+  }
+}
+```
+
+### 小数据集完整训练
+```json
+{
+  "input": {
+    "coin_number": 5,
+    "window_size": 20,
+    "test_portion": 0.15
+  },
+  "training": {
+    "steps": 30000,
+    "batch_size": 64
+  }
+}
+```
+
+### 生产级配置
+```json
+{
+  "input": {
+    "coin_number": 20,
+    "window_size": 50,
+    "test_portion": 0.08,
+    "volume_average_days": 60
+  },
+  "training": {
+    "steps": 100000,
+    "batch_size": 128,
+    "learning_rate": 0.0001
+  }
+}
+```
+
+## ?? 有用的链接
+
+- **论文**: [arXiv:1706.10059](https://arxiv.org/abs/1706.10059)
+- **GitHub**: [PGPortfolio](https://github.com/ZhengyaoJiang/PGPortfolio)
+- **OKX API 文档**: [https://www.okx.com/docs](https://www.okx.com/docs)
+- **PyTorch 文档**: [https://pytorch.org/docs](https://pytorch.org/docs)
+
+---
+
+**最后更新**: 2025年1月
+**Python 版本**: 3.10+
+**Anaconda 环境**: C:\Users\86132\anaconda3\

@@ -1,0 +1,10 @@
+﻿{
+    "python.defaultInterpreterPath": "C:\\Users\\86132\\anaconda3\\python.exe",
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python",
+        "editor.formatOnSave": true
+    }
+}

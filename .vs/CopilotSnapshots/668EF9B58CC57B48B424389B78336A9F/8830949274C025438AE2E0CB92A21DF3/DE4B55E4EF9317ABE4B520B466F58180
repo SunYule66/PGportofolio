@@ -1,0 +1,24 @@
+﻿#!/usr/bin/env python
+"""Verify that requests is installed and can be imported."""
+import sys
+
+print(f"Python executable: {sys.executable}")
+print(f"Python version: {sys.version}")
+
+try:
+    import requests
+    print(f"? requests {requests.__version__} is installed")
+    print(f"  Location: {requests.__file__}")
+except ImportError as e:
+    print(f"? Failed to import requests: {e}")
+    sys.exit(1)
+
+# Test importing poloniex
+try:
+    from pgportfolio.marketdata.poloniex import Poloniex
+    print("? Successfully imported Poloniex")
+except ImportError as e:
+    print(f"? Failed to import Poloniex: {e}")
+    sys.exit(1)
+
+print("\n? All checks passed!")

@@ -1,0 +1,74 @@
+﻿@echo off
+REM ============================================
+REM PGPortfolio - 完整环境配置和验证脚本
+REM ============================================
+setlocal enabledelayedexpansion
+
+cls
+echo.
+echo ============================================
+echo   PGPortfolio 环境配置向导
+echo ============================================
+echo.
+
+REM 设置 Python 和路径
+set PYTHON_EXE=C:\Users\86132\anaconda3\python.exe
+set PYTHONPATH=%CD%\PGPortfolio-master;%PYTHONPATH%
+
+echo [1/4] 检查 Python 环境...
+echo.
+%PYTHON_EXE% --version
+if errorlevel 1 (
+    echo ERROR: 找不到 Python！请确保 Anaconda 已正确安装在 C:\Users\86132\anaconda3
+    pause
+    exit /b 1
+)
+echo ? Python 环境 OK
+echo.
+
+echo [2/4] 验证依赖...
+echo.
+%PYTHON_EXE% PGPortfolio-master\verify_requests.py
+if errorlevel 1 (
+    echo ERROR: 依赖验证失败
+    echo 请运行: python -m pip install requests
+    pause
+    exit /b 1
+)
+echo.
+
+echo [3/4] 诊断系统设置...
+echo.
+%PYTHON_EXE% PGPortfolio-master\diagnose_setup.py
+echo.
+
+echo [4/4] 创建必要目录...
+if not exist "PGPortfolio-master\database" mkdir PGPortfolio-master\database
+if not exist "PGPortfolio-master\train_package" mkdir PGPortfolio-master\train_package
+echo ? 目录已创建
+echo.
+
+echo ============================================
+echo   ? 环境配置完成！
+echo ============================================
+echo.
+echo 现在可以运行以下命令：
+echo.
+echo   1. 下载数据:
+echo      python PGPortfolio-master\main.py --mode download_data
+echo.
+echo   2. 生成训练包:
+echo      python PGPortfolio-master\main.py --mode generate --repeat 1
+echo.
+echo   3. 训练模型:
+echo      python PGPortfolio-master\main.py --mode train --processes 1
+echo.
+echo   4. 查看帮助:
+echo      python PGPortfolio-master\main.py --help
+echo.
+echo 详见文档:
+echo   - QUICK_START.md - 快速开始指南
+echo   - ENVIRONMENT_SETUP.md - 完整配置指南
+echo.
+
+pause

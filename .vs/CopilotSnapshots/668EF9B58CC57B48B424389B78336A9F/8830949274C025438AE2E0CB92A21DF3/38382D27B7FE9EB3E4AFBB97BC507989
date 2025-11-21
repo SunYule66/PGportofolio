@@ -1,0 +1,168 @@
+﻿#!/usr/bin/env python
+"""
+Comprehensive verification script for PGPortfolio setup.
+This script checks all dependencies and configurations.
+"""
+import sys
+import os
+from pathlib import Path
+
+def print_header(title):
+    print(f"\n{'='*60}")
+    print(f"  {title}")
+    print(f"{'='*60}")
+
+def check_python_env():
+    """Check Python environment."""
+    print_header("1. Python Environment")
+    print(f"Executable: {sys.executable}")
+    print(f"Version: {sys.version}")
+    print(f"Prefix: {sys.prefix}")
+    
+    # Check if it's Anaconda
+    if 'anaconda' in sys.executable.lower() or 'conda' in sys.prefix.lower():
+        print("? Using Anaconda Python")
+        return True
+    else:
+        print("? Not using Anaconda Python - may have dependency issues")
+        return False
+
+def check_dependencies():
+    """Check if all required dependencies are installed."""
+    print_header("2. Required Dependencies")
+    
+    dependencies = {
+        'requests': 'HTTP library for API calls',
+        'torch': 'PyTorch for neural networks',
+        'pandas': 'Data manipulation',
+        'numpy': 'Numerical computing',
+        'tensorboard': 'Training visualization',
+        'PIL': 'Image processing',
+    }
+    
+    all_ok = True
+    for dep_name, description in dependencies.items():
+        try:
+            if dep_name == 'PIL':
+                import PIL
+                module = PIL
+            else:
+                module = __import__(dep_name)
+            
+            version = getattr(module, '__version__', 'unknown')
+            print(f"? {dep_name:15} {version:15} ({description})")
+        except ImportError as e:
+            print(f"? {dep_name:15} MISSING         ({description})")
+            print(f"  Error: {e}")
+            all_ok = False
+    
+    return all_ok
+
+def check_project_structure():
+    """Check if project structure is correct."""
+    print_header("3. Project Structure")
+    
+    required_files = [
+        'main.py',
+        'setup.py',
+        'requirements.txt',
+        'pgportfolio/__init__.py',
+        'pgportfolio/marketdata/poloniex.py',
+        'pgportfolio/marketdata/datamatrices.py',
+    ]
+    
+    all_ok = True
+    for file_path in required_files:
+        full_path = Path(file_path)
+        if full_path.exists():
+            print(f"? {file_path}")
+        else:
+            print(f"? {file_path} NOT FOUND")
+            all_ok = False
+    
+    return all_ok
+
+def check_imports():
+    """Check if critical modules can be imported."""
+    print_header("4. Import Tests")
+    
+    tests = [
+        ('pgportfolio.marketdata.poloniex', 'Poloniex'),
+        ('pgportfolio.marketdata.coinlist', 'CoinList'),
+        ('pgportfolio.marketdata.datamatrices', 'DataMatrices'),
+    ]
+    
+    all_ok = True
+    for module_name, class_name in tests:
+        try:
+            module = __import__(module_name, fromlist=[class_name])
+            cls = getattr(module, class_name)
+            print(f"? from {module_name} import {class_name}")
+        except Exception as e:
+            print(f"? from {module_name} import {class_name}")
+            print(f"  Error: {e}")
+            all_ok = False
+    
+    return all_ok
+
+def check_requests_specifically():
+    """Special check for requests library."""
+    print_header("5. Requests Library (Critical)")
+    
+    try:
+        import requests
+        print(f"? requests {requests.__version__} is installed")
+        print(f"  Location: {requests.__file__}")
+        
+        # Try to use requests
+        try:
+            # Just create a session to verify it works
+            session = requests.Session()
+            print(f"? requests.Session() works correctly")
+            return True
+        except Exception as e:
+            print(f"? Error using requests: {e}")
+            return False
+    except ImportError as e:
+        print(f"? Failed to import requests: {e}")
+        print(f"\n  Fix: Run this command to install requests:")
+        print(f"  python -m pip install requests")
+        return False
+
+def main():
+    """Run all checks."""
+    print("\n" + "="*60)
+    print("  PGPortfolio Setup Verification")
+    print("="*60)
+    
+    results = {
+        'Python Environment': check_python_env(),
+        'Dependencies': check_dependencies(),
+        'Project Structure': check_project_structure(),
+        'Imports': check_imports(),
+        'Requests Library': check_requests_specifically(),
+    }
+    
+    print_header("Summary")
+    for check_name, result in results.items():
+        status = "? PASS" if result else "? FAIL"
+        print(f"{check_name:30} {status}")
+    
+    all_ok = all(results.values())
+    
+    print("\n" + "="*60)
+    if all_ok:
+        print("  ? All checks passed! You're ready to go.")
+        print("  Run: python main.py --mode download_data")
+    else:
+        print("  ? Some checks failed. See details above.")
+        print("  Recommended fixes:")
+        print("  1. Use Anaconda Python: C:\\Users\\86132\\anaconda3\\python.exe")
+        print("  2. Run: python -m pip install -r requirements.txt")
+        print("  3. Set IDE Python interpreter to Anaconda")
+    print("="*60 + "\n")
+    
+    return 0 if all_ok else 1
+
+if __name__ == "__main__":
+    sys.exit(main())

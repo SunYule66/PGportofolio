@@ -1,0 +1,288 @@
+﻿# ?? PGPortfolio 环境配置 - 文件清单
+
+## ?? 新增文档文件
+
+### 1. **README_WINDOWS.md** ? 从这里开始！
+- **位置**: `PGPortfolio-master/README_WINDOWS.md`
+- **用途**: Windows 用户完全安装和使用指南
+- **包含**: 快速开始、常用工作流、问题解决、安全建议
+- **建议**: 第一次使用必读！
+
+### 2. **QUICK_START.md**
+- **位置**: `PGPortfolio-master/QUICK_START.md`
+- **用途**: 快速参考指南和常用命令速查表
+- **包含**: 常见命令、配置调整、TensorBoard 使用
+- **建议**: 把这个收藏为书签，经常查阅
+
+### 3. **ENVIRONMENT_SETUP.md**
+- **位置**: `PGPortfolio-master/ENVIRONMENT_SETUP.md`
+- **用途**: 完整的环境配置和详细说明文档
+- **包含**: 依赖列表、配置详解、故障排除、工作流示例
+- **建议**: 需要深入了解时查看
+
+### 4. **README_WINDOWS.md**
+- **位置**: `PGPortfolio-master/README_WINDOWS.md`
+- **用途**: Windows 系统专用指南
+- **包含**: Windows 特定问题、批处理脚本用法、PowerShell 配置
+- **建议**: Windows 用户必读
+
+---
+
+## ?? 新增启动脚本
+
+### 批处理脚本 (Windows CMD)
+
+#### **setup_environment.bat** ? 第一次运行这个！
+- **位置**: `PGPortfolio-master/setup_environment.bat`
+- **用途**: 完整的环境配置和验证
+- **操作**: 双击运行或 `cmd` 中执行
+- **作用**:
+  - 检查 Python 环境
+  - 验证依赖（requests 等）
+  - 诊断系统配置
+  - 创建必要目录
+- **耗时**: 1-2 分钟
+
+#### **run_pgportfolio.bat**
+- **位置**: `PGPortfolio-master/run_pgportfolio.bat`
+- **用途**: 快速运行 PGPortfolio
+- **操作**: `run_pgportfolio.bat [args]`
+- **例子**:
+  ```cmd
+  run_pgportfolio.bat --mode download_data
+  run_pgportfolio.bat --mode train
+  ```
+
+### PowerShell 脚本
+
+#### **setup_environment.ps1**
+- **位置**: `PGPortfolio-master/setup_environment.ps1`
+- **用途**: PowerShell 版本的环境配置
+- **操作**: 
+  ```powershell
+  .\setup_environment.ps1
+  ```
+- **优势**: 彩色输出，更易读
+
+#### **run_pgportfolio.ps1**
+- **位置**: `PGPortfolio-master/run_pgportfolio.ps1`
+- **用途**: PowerShell 版本的运行脚本
+- **操作**:
+  ```powershell
+  .\run_pgportfolio.ps1 --mode download_data
+  .\run_pgportfolio.ps1 --mode train --device gpu
+  ```
+
+---
+
+## ?? 验证和诊断工具
+
+### **diagnose_setup.py**
+- **位置**: `PGPortfolio-master/diagnose_setup.py`
+- **用途**: 全面诊断系统配置
+- **操作**: `python diagnose_setup.py`
+- **检查内容**:
+  - ? Python 环境和版本
+  - ? 所有依赖（requests, torch, pandas 等）
+  - ? 项目结构
+  - ? 关键模块导入
+  - ? requests 库功能测试
+- **输出**: 详细的检查结果和故障排除建议
+
+### **verify_requests.py**
+- **位置**: `PGPortfolio-master/verify_requests.py`
+- **用途**: 快速验证 requests 库
+- **操作**: `python verify_requests.py`
+- **检查内容**:
+  - ? requests 是否已安装
+  - ? Poloniex 类是否可导入
+- **用时**: <1 秒
+
+---
+
+## ??? 配置文件
+
+### **.vscode/settings.json**
+- **位置**: `PGPortfolio-master/.vscode/settings.json`
+- **用途**: VS Code IDE 配置
+- **作用**:
+  - 指定 Python 解释器为 Anaconda
+  - 启用代码格式化
+  - 配置 Python 环境
+- **适用**: VS Code 用户
+
+### **.env**
+- **位置**: `PGPortfolio-master/.env`
+- **用途**: 环境变量配置
+- **作用**: 设置 PYTHONPATH
+- **适用**: IDE 环境变量管理
+
+---
+
+## ?? 修改的源代码文件
+
+### **main.py** (已修改)
+- **修改内容**:
+  - 添加 `_verify_dependencies()` 函数
+  - 启动时检查 requests 依赖
+  - 如果缺少依赖，给出清晰的错误提示
+- **好处**:
+  - 提早发现依赖问题
+  - 友好的错误提示
+  - 防止运行到一半才发现缺少依赖
+
+---
+
+## ?? 依赖和项目文件（已存在）
+
+### **requirements.txt** (已更新)
+- 添加了 `requests>=2.28.0`
+- 包含所有必需的依赖
+
+### **setup.py** (已更新)
+- 添加了 `install_requires` 列表
+- 包括 `requests` 及其他依赖
+
+### **pgportfolio/net_config.json**
+- 项目的主配置文件
+- 定义市场数据、训练参数、交易参数
+
+---
+
+## ?? 使用步骤总结
+
+### 第一次使用：
+
+```
+1. 打开 Windows 命令提示符或 PowerShell
+2. 进入 PGPortfolio-master 目录
+3. 双击运行 setup_environment.bat
+   或: .\setup_environment.ps1
+4. 等待完成（1-2 分钟）
+5. 查看输出结果和建议
+```
+
+### 第二次及以后使用：
+
+```
+方法 A - 使用批处理脚本：
+  run_pgportfolio.bat --mode download_data
+  
+方法 B - 使用 PowerShell：
+  .\run_pgportfolio.ps1 --mode train
+  
+方法 C - 直接运行 Python：
+  python main.py --mode generate --repeat 1
+```
+
+---
+
+## ?? 文档阅读顺序
+
+1. **README_WINDOWS.md** ← 从这里开始
+2. **QUICK_START.md** ← 快速参考
+3. **ENVIRONMENT_SETUP.md** ← 深入学习
+4. **原始 README.md** ← 论文和理论背景
+5. **user_guide.md** ← 高级用法
+
+---
+
+## ?? 关键信息
+
+| 项目 | 值 |
+|-----|-----|
+| Python 版本 | 3.10+ (Anaconda) |
+| Python 路径 | C:\Users\86132\anaconda3\python.exe |
+| 数据存储 | database/ (SQLite) |
+| 训练输出 | train_package/ |
+| 默认交易所 | OKX |
+| 支持市场 | okx, poloniex |
+
+---
+
+## ? 验证清单
+
+完成以下步骤确保环境正确配置：
+
+- [ ] 运行了 `setup_environment.bat`
+- [ ] 所有依赖验证通过 (`diagnose_setup.py`)
+- [ ] `verify_requests.py` 成功运行
+- [ ] 创建了 `database/` 和 `train_package/` 目录
+- [ ] 理解了 `QUICK_START.md` 的常用命令
+- [ ] 已编辑 `pgportfolio/net_config.json`（可选）
+- [ ] 成功运行了至少一个命令（如 `--help`）
+
+---
+
+## ?? 问题排查
+
+### 如果某个脚本不工作：
+
+1. **检查 Python 路径**:
+   ```cmd
+   python --version
+   python -m pip show requests
+   ```
+
+2. **运行诊断工具**:
+   ```cmd
+   python diagnose_setup.py
+   ```
+
+3. **验证依赖**:
+   ```cmd
+   python verify_requests.py
+   ```
+
+4. **查看错误日志**:
+   ```cmd
+   python main.py 2>&1 | tee error.log
+   ```
+
+---
+
+## ?? 快速支持
+
+### 最常见的问题：
+
+**Q: 还是提示 "No module named 'requests'"？**
+A: 运行 `setup_environment.bat`
+
+**Q: 命令执行很慢？**
+A: 第一次下载数据时正常，数据会缓存
+
+**Q: 想加快训练？**
+A: 改用 GPU: `python main.py --mode train --device gpu`
+
+**Q: 想改变训练参数？**
+A: 编辑 `pgportfolio/net_config.json`
+
+**Q: 想看训练进度？**
+A: 运行 `tensorboard --logdir=train_package\1`
+
+---
+
+## ?? 推荐操作流程
+
+```
+第一天:
+  1. 运行 setup_environment.bat ?
+  2. 运行 python main.py --mode download_data ?
+  3. 阅读 QUICK_START.md ?
+
+第二天:
+  1. 生成训练包: python main.py --mode generate --repeat 1
+  2. 训练模型: python main.py --mode train
+  3. 查看结果: train_package/train_summary.csv
+
+第三天及以后:
+  1. 修改配置: pgportfolio/net_config.json
+  2. 重复生成、训练、回测
+  3. 比对不同参数下的效果
+```
+
+---
+
+**最后更新**: 2025 年 1 月
+**环境**: Windows + Anaconda Python 3.10
+**状态**: ? 完全配置完成

@@ -1,0 +1,392 @@
+﻿# PGPortfolio 命令速查表 (可打印版)
+
+## ?? 常用命令速查
+
+### 初始化 (首次必做)
+```
+python main.py --mode download_data
+```
+下载市场数据到本地数据库 (5-30 分钟)
+
+### 生成训练包
+```
+python main.py --mode generate --repeat 1
+```
+创建 1 个训练文件夹 (改 --repeat N 创建 N 个)
+
+### 训练模型
+```
+python main.py --mode train --processes 1
+```
+使用 CPU 训练 (用 --device gpu 改用 GPU)
+
+### 回测模型
+```
+python main.py --mode backtest --algo 1
+```
+测试模型在历史数据上的表现
+
+### 绘制对比图
+```
+python main.py --mode plot --algos crp,olmar,1 --labels "CRP,OLMAR,NN"
+```
+对比不同算法的收益曲线
+
+### 表格报告
+```
+python main.py --mode table --algos 1 --format csv
+```
+输出详细的性能指标表格
+
+### 模拟交易 (纸质交易)
+```
+python main.py --mode trade --algo 1 --paper-trading
+```
+OKX 模拟盘测试策略 (安全测试用)
+
+### 查看帮助
+```
+python main.py --help
+```
+查看所有可用的命令行选项
+
+---
+
+## ?? 配置调整
+
+### 编辑配置文件
+```
+pgportfolio/net_config.json
+```
+
+### 关键参数
+
+#### 数据配置
+```json
+"input": {
+  "start_date": "2024/01/01",      // 开始日期
+  "end_date": "2024/12/31",        // 结束日期
+  "coin_number": 10,               // 交易币种数
+  "market": "okx"                  // okx 或 poloniex
+}
+```
+
+#### 训练参数
+```json
+"training": {
+  "steps": 50000,                  // 训练步数 (越大越慢)
+  "batch_size": 64,                // 批大小
+  "learning_rate": 0.0002          // 学习率
+}
+```
+
+### 配置预设
+
+#### ? 快速测试 (2-5分钟)
+```json
+"coin_number": 3,
+"window_size": 10,
+"steps": 2000,
+"batch_size": 32
+```
+
+#### ?? 标准训练 (15-30分钟)
+```json
+"coin_number": 10,
+"window_size": 30,
+"steps": 40000,
+"batch_size": 80
+```
+
+#### ?? 深度训练 (1-2小时)
+```json
+"coin_number": 20,
+"window_size": 50,
+"steps": 100000,
+"batch_size": 128
+```
+
+---
+
+## ?? 完整工作流
+
+### 流程 1: 从零开始的完整训练
+
+```
+# 第一步: 下载数据 (必做)
+$ python main.py --mode download_data
+
+# 第二步: 生成训练包
+$ python main.py --mode generate --repeat 1
+
+# 第三步: 训练模型
+$ python main.py --mode train --processes 1
+
+# 第四步: 查看结果
+$ cat train_package/train_summary.csv
+
+# 第五步: 回测验证
+$ python main.py --mode backtest --algo 1
+
+# 第六步: 绘制图表
+$ python main.py --mode plot --algos 1,crp --labels "Model,CRP"
+```
+
+### 流程 2: 使用 GPU 并行训练
+
+```
+# 生成 3 个训练包
+$ python main.py --mode generate --repeat 3
+
+# 并行训练 (2 个进程)
+$ python main.py --mode train --processes 2 --device gpu
+
+# 等待完成，查看结果
+$ cat train_package/train_summary.csv
+```
+
+### 流程 3: 快速原型测试
+
+```
+# 编辑 net_config.json (设置小参数)
+# coin_number: 3, steps: 2000
+
+$ python main.py --mode generate --repeat 1
+$ python main.py --mode train
+$ python main.py --mode backtest --algo 1
+```
+
+### 流程 4: OKX 模拟交易
+
+```
+# 先确保有已训练的模型在 train_package/1/
+
+# 纸质交易测试 (最安全)
+$ python main.py --mode trade --algo 1 --paper-trading
+
+# OKX 模拟盘测试
+$ python main.py --mode trade --algo 1 --paper-trading --okx-simulated
+```
+
+---
+
+## ?? 监控和调试
+
+### 实时查看训练进度
+```
+tensorboard --logdir=train_package\1
+# 然后访问 http://localhost:6006
+```
+
+### 查看训练日志
+```
+# Windows
+type train_package\1\programlog
+
+# Linux/Mac
+cat train_package/1/programlog
+```
+
+### 诊断系统
+```
+python diagnose_setup.py
+```
+
+### 验证依赖
+```
+python verify_requests.py
+```
+
+---
+
+## ?? OKX 交易所配置
+
+### 配置 API 密钥 (方式 1: 直接写入)
+```json
+"trading": {
+  "api_key": "your_key",
+  "api_secret": "your_secret",
+  "passphrase": "your_passphrase",
+  "provider": "okx",
+  "paper_trading": true
+}
+```
+
+### 配置 API 密钥 (方式 2: 环境变量, 更安全)
+```
+Windows CMD:
+set OKX_API_KEY=your_key
+set OKX_API_SECRET=your_secret
+set OKX_PASSPHRASE=your_passphrase
+
+PowerShell:
+$env:OKX_API_KEY="your_key"
+$env:OKX_API_SECRET="your_secret"
+$env:OKX_PASSPHRASE="your_passphrase"
+```
+
+### 交易模式选项
+```
+--paper-trading          # 纸质交易 (安全, 推荐)
+--okx-simulated          # OKX 模拟盘
+--live-trading           # 真实交易 (谨慎!)
+--okx-td-mode cash       # 现货模式
+```
+
+---
+
+## ?? 常见问题速查
+
+| 问题 | 命令 |
+|------|------|
+| 还是报 requests 错误 | `setup_environment.bat` |
+| 不知道用什么命令 | `python main.py --help` |
+| 想看训练进度 | `tensorboard --logdir=train_package\1` |
+| 想诊断系统问题 | `python diagnose_setup.py` |
+| 想快速测试 | 编辑 net_config.json 用小参数 |
+| 想用 GPU 加速 | `python main.py --mode train --device gpu` |
+| 想查看训练日志 | `type train_package\1\programlog` |
+| 想并行训练 | `python main.py --mode train --processes 2` |
+
+---
+
+## ?? 关键文件位置
+
+| 文件 | 位置 | 用途 |
+|------|------|------|
+| 主程序 | `main.py` | 入口 |
+| 配置 | `pgportfolio/net_config.json` | 修改参数 |
+| 数据库 | `database/okx_data.db` | 市场数据 |
+| 训练输出 | `train_package/` | 模型和日志 |
+| 结果汇总 | `train_package/train_summary.csv` | 性能对比 |
+
+---
+
+## ?? 预期耗时
+
+| 操作 | 耗时 | 说明 |
+|------|------|------|
+| 首次数据下载 | 5-30 分钟 | 取决于网络 |
+| 快速原型训练 | 2-5 分钟 | coin_number=3, steps=2000 |
+| 标准训练 | 15-30 分钟 | CPU, 正常参数 |
+| 深度训练 | 1-2 小时 | CPU, 大参数 |
+| GPU 训练 | 5-15 分钟 | GPU 快 5-10 倍 |
+| 回测 | 1-5 分钟 | 取决于数据量 |
+
+---
+
+## ?? 快捷键和技巧
+
+### Windows 命令行
+```
+Ctrl+C          取消正在运行的程序
+↑ / ↓           浏览历史命令
+Tab             自动补全文件名
+cls             清屏
+dir             列出文件
+cd              改变目录
+```
+
+### PowerShell
+```
+Ctrl+C          取消
+Ctrl+Z          撤销
+Get-Location    显示当前目录
+Get-ChildItem   列出文件
+Clear-Host      清屏
+```
+
+### TensorBoard
+```
+http://localhost:6006        访问地址
+Ctrl+C                       停止 TensorBoard
+tensorboard --help           查看帮助
+```
+
+---
+
+## ?? 安全建议
+
+? **不要做**:
+- 把 API 密钥写在源代码中
+- 在测试前直接用 --live-trading
+- 忽略 paper_trading 模式的测试
+- 在不了解参数的情况下修改配置
+
+? **应该做**:
+- 使用环境变量存储 API 密钥
+- 先用 --paper-trading 充分测试
+- 在模拟盘验证策略
+- 理解每个参数的含义
+- 定期备份重要的模型
+
+---
+
+## ?? 获取帮助
+
+**第 1 步**: 查看这个速查表
+
+**第 2 步**: 查看完整文档
+- README_WINDOWS.md - Windows 完全指南
+- QUICK_START.md - 快速参考
+- ENVIRONMENT_SETUP.md - 详细配置
+
+**第 3 步**: 运行诊断工具
+```
+python diagnose_setup.py
+```
+
+**第 4 步**: 查看日志文件
+```
+type train_package\1\programlog
+```
+
+---
+
+## ?? 推荐练习顺序
+
+1. **了解命令** - 看这个速查表和 --help
+2. **第一次下载** - 运行 --mode download_data
+3. **快速测试** - 用小参数训练一个模型 (2-5分钟)
+4. **查看结果** - 打开 train_package/train_summary.csv
+5. **绘制对比** - 运行 --mode plot
+6. **调整参数** - 编辑 net_config.json
+7. **深度训练** - 用更大的参数重新训练
+8. **模拟交易** - 尝试 --mode trade --paper-trading
+
+---
+
+## ?? 5 分钟快速开始
+
+```bash
+# 1. 检查环境
+python verify_requests.py
+
+# 2. 下载数据 (如果没下过)
+python main.py --mode download_data
+
+# 3. 生成训练包
+python main.py --mode generate --repeat 1
+
+# 4. 快速训练 (5 分钟)
+python main.py --mode train --processes 1
+
+# 5. 查看结果
+type train_package\train_summary.csv
+```
+
+---
+
+## ?? 注意事项
+
+- 首次运行 `download_data` 会很慢，之后数据会缓存
+- 修改配置后必须重新生成训练包
+- GPU 训练前确保 NVIDIA GPU 可用 (`nvidia-smi` 命令)
+- OKX 交易前必须在 paper_trading 模式下充分测试
+- 训练会在 `train_package/` 中产生大量文件，定期清理
+
+---
+
+**打印此表以供快速参考！**
+
+最后更新: 2025-01-20

@@ -1,0 +1,23 @@
+﻿from setuptools import setup, find_packages
+
+with open("README.md") as f:
+    readme = f.read()
+
+setup(
+    name="pgportfolio",
+    version="1.0.0",
+    description="",
+    long_description=readme,
+    author="Zhengyao Jiang, Dixing Xu, Jinjun Liang",
+    author_email="",
+    packages=find_packages(exclude=("tests", "docs")),
+    install_requires=[
+        "torch>=2.2.0",
+        "tensorboard>=2.13.0",
+        "pympler>=0.5",
+        "cvxopt>=1.1.9",
+        "seaborn>=0.8.1",
+        "pandas>=0.20.3",
+        "requests>=2.25.0",
+    ],
+)

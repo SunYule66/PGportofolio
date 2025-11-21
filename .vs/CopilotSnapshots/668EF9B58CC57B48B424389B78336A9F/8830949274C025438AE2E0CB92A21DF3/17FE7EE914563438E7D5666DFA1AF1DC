@@ -1,0 +1,22 @@
+﻿# This PowerShell script runs PGPortfolio with the correct Anaconda Python and PYTHONPATH
+
+$PythonExecutable = "C:\Users\86132\anaconda3\python.exe"
+$ProjectRoot = Get-Location
+
+# Set PYTHONPATH to include the project root
+$env:PYTHONPATH = "$ProjectRoot;$env:PYTHONPATH"
+
+Write-Host "Using Python: $PythonExecutable" -ForegroundColor Green
+Write-Host "Python version:" -ForegroundColor Green
+& $PythonExecutable --version
+
+Write-Host "PYTHONPATH: $env:PYTHONPATH" -ForegroundColor Green
+Write-Host ""
+
+# Parse arguments
+if ($args.Count -eq 0) {
+    Write-Host "Running with default --mode download_data" -ForegroundColor Yellow
+    & $PythonExecutable main.py --mode download_data
+} else {
+    & $PythonExecutable main.py @args
+}

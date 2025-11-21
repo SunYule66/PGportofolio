@@ -1,0 +1,342 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\ENVIRONMENT_SETUP.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\ENVIRONMENT_SETUP.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\QUICK_START.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\QUICK_START.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\setup_environment.bat||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\setup_environment.bat||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\setup_environment.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\setup_environment.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\README_WINDOWS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\README_WINDOWS.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\SETUP_SUMMARY.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\SETUP_SUMMARY.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\START_HERE.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\START_HERE.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\SETUP_COMPLETED.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\SETUP_COMPLETED.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\COMMANDS_CHEATSHEET.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\COMMANDS_CHEATSHEET.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\SETUP_COMPLETED.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\SETUP_COMPLETED.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\README_FINAL_SUMMARY.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\README_FINAL_SUMMARY.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\verify_requests.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\verify_requests.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\.vscode\\settings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\.vscode\\settings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\.env||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\.env||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\run_pgportfolio.bat||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\run_pgportfolio.bat||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\run_pgportfolio.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\run_pgportfolio.ps1||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\diagnose_setup.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:PGPortfolio-master\\diagnose_setup.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "run_pgportfolio.ps1",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\run_pgportfolio.ps1",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\run_pgportfolio.ps1",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\run_pgportfolio.ps1",
+              "RelativeToolTip": "PGPortfolio-master\\run_pgportfolio.ps1",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-11-20T13:32:01.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "run_pgportfolio.bat",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\run_pgportfolio.bat",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\run_pgportfolio.bat",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\run_pgportfolio.bat",
+              "RelativeToolTip": "PGPortfolio-master\\run_pgportfolio.bat",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG7SURBVDhPzZTNSxtBHEBfPGipJ\u002B2iGFBjzJqu4nda0EO99CaCeBOEQlsotCCUakMO6sWrBz8QlZaWInjxXyjtQbNKwCqYUGObRKIosfFSKTazcXsQQWZXJOqhD4aB37x5cxu4TUzTlEc3xhHwD8bBdMkH18ORyLtOrLOr23YH00XAP2BmMplbWQH/gJl34WELuweHfF5eYz91JB9dim3wz8lf9G8Rfib2\u002BH18TGQ7xnJog1T66rBtMByNkzpMc3qaxdegkc0a7Ozuk9w7kFULtsEmzYNhGHhc5VRVOPG6KzEMQb2myqoF22A4GkOIDOGtH2zHdtiIRBFC8DUYklULtsGyUoWyEgUhBF\u002BWVskaBiVKEW2tjbJqwTZYqhTT0dZKg6ZypyCfWq\u002Bbx4/aiSeTvPIPsb4Z5lc6LV\u002BDy4LnVJY76e3pxFtdxeS7j8x8mKeuxsP49Cxz7z/JOlwVvEitWk1djYeXz55Qr91HVd2yArkEI9\u002B3WA2FGJuYIqivENR1WYFcgk/7eul/8RxdX\u002BHt635GR4ZlBXIJKveK8bU0s7gwz8MHPgoL78oKnH1fb\u002BLgyPnHscdMyJP/j39Wh9oGPXeiTgAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-11-20T13:32:01.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": ".env",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\.env",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\.env",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\.env",
+              "RelativeToolTip": "PGPortfolio-master\\.env",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-11-20T13:32:01.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "settings.json",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\.vscode\\settings.json",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\.vscode\\settings.json",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\.vscode\\settings.json",
+              "RelativeToolTip": "PGPortfolio-master\\.vscode\\settings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-20T13:32:01.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "verify_requests.py",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\verify_requests.py",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\verify_requests.py",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\verify_requests.py",
+              "RelativeToolTip": "PGPortfolio-master\\verify_requests.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARtSURBVDhPdZRbbFRFGMd/M2fPdrc32V5ohbLQJhgJKheJQk0EwQhiosYAPhnRxNgQgeADXiBKUEi8JVWUCoqBKpEYDRCBhAeDL8olIveA2JZCoLT0QqHb3XPOnDOfD9sakDgvk/km3y\u002B/\u002BSb5w/\u002BsRy6//\u002BKYji9bqy423Rj9d\u002BPCW\u002B8\u002BzCysfqVj8c5bawCIiPpv7dWrb\u002ByJipLzTnhlui10VSwMcY3BDcLthbaoYdGo3\u002BaUavv1N93lFQPOYLK9dqt3a78CWNfXcF9laHeVJKi7QLH6brCWTomhrcU1eWDchkwvvTI4ubC7qDNw\u002BfF6irmFN5/aNGbrvjuAn3Y1\u002BEZ0vDMDx9p8/nJShGiUCXFMRLm9yf3F3aTwSYrl95tFDBiH6o6O5v0rDi8H\u002Bm8DbuhqsNcjV7Wf66PlqwP0ZyB33cP4lriGAq0JghDjWQJfyKk4YRCR68sRDJjHgF//BX5xbUlxzjLQE8U5d7afns37WTD/NWoqa\u002Bnp6eDnfd/T2tpCVVkNi557idIRFWzb8S0HjxzCZAzhym1n7D1zprNoZAZAA9VZ65CzDj1hnCiw1E\u002BZRcuF04wdXcs7KxuJx5Ls3XmI9Jg6WtrbSI9OI5EQZkOcUWUT4xNKup2D2ecBYq1BYkpcWQatQ5\u002BJURQISgQi8DwPL\u002Bfx\u002BMxnaG9v4\u002BUli8n6ISJC5EXY0OI4GlUSS8QqnR3O8eyzOhKpylmHjjCBRggDAYH6h2bT0XGFVWuWc/z4UVKpcuIFhYysqKRubC0mG4LWjIz3Myt5EukNCC9mj\u002BlB3PFZcei1LrMSvUhosRaatjTySeNaLrS2c\u002BrUabbvaObwgT/Y88NeHpw0DSWCG1dsSX1EY3ID9nym31pns1p88c3mnKgXKhyDOnuJA2t\u002BwQssQdYivsF4gvFDPKDALSD0DcY3iAUrsHvXNB6eOZLxBzY29s1Pr9ChqPSNyMUXTadxCYzFDyAIhNAIJrAYI6hA8Adyt8FEBF80Fjg8Y/UNAG3QFZ5oLpkkXaYAzxeCQDAmwniWMIgQAbEytIMIIPlzDoUFapK9MwF0bxQr7IoKuGQSdAYuxoAXgHgW40d5k2HYEERk2BA8CxGKSMlUgNiVoOAuDw2AtRovgHVvrWfyvRMR8j8uwNx5s/OQfKjkLRHskGEkqlRkTpWqO/dBKFY5YjXm6CV6lzURDIYUFTpYkaF55QHDcxu2FBE27a5n7uxySpVQqmSVqj318VIr\u002Bl2xTrntN5iznRRjWDbuTwoQkliSQFJZXGz\u002BLQJG4LzEmTq5hHSZS6myFGOPKYD0yY0pR2feszbWgGhnTCxL07gjlOuQBKCVYEVhBAwKoxRHTJzWyKVaR1SriLt1RKUT\u002BrcFbPrM2omaxGcienYcxZODMRaMO2EnlV4LDCQ8UWTQDIim2S8ipSwTHMMIHQnC1UIJ374jsQFqz6x/OjLFn/tXxna5qdZHL9e/nstk5j3gO\u002B7SrPBEH07NIRPXaR31jXBZPSPxU9Nw7z/r7YcZEQc2bgAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-11-20T13:32:01.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.py",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\main.py",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\main.py",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\main.py",
+              "RelativeToolTip": "PGPortfolio-master\\main.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARtSURBVDhPdZRbbFRFGMd/M2fPdrc32V5ohbLQJhgJKheJQk0EwQhiosYAPhnRxNgQgeADXiBKUEi8JVWUCoqBKpEYDRCBhAeDL8olIveA2JZCoLT0QqHb3XPOnDOfD9sakDgvk/km3y\u002B/\u002BSb5w/\u002BsRy6//\u002BKYji9bqy423Rj9d\u002BPCW\u002B8\u002BzCysfqVj8c5bawCIiPpv7dWrb\u002ByJipLzTnhlui10VSwMcY3BDcLthbaoYdGo3\u002BaUavv1N93lFQPOYLK9dqt3a78CWNfXcF9laHeVJKi7QLH6brCWTomhrcU1eWDchkwvvTI4ubC7qDNw\u002BfF6irmFN5/aNGbrvjuAn3Y1\u002BEZ0vDMDx9p8/nJShGiUCXFMRLm9yf3F3aTwSYrl95tFDBiH6o6O5v0rDi8H\u002Bm8DbuhqsNcjV7Wf66PlqwP0ZyB33cP4lriGAq0JghDjWQJfyKk4YRCR68sRDJjHgF//BX5xbUlxzjLQE8U5d7afns37WTD/NWoqa\u002Bnp6eDnfd/T2tpCVVkNi557idIRFWzb8S0HjxzCZAzhym1n7D1zprNoZAZAA9VZ65CzDj1hnCiw1E\u002BZRcuF04wdXcs7KxuJx5Ls3XmI9Jg6WtrbSI9OI5EQZkOcUWUT4xNKup2D2ecBYq1BYkpcWQatQ5\u002BJURQISgQi8DwPL\u002Bfx\u002BMxnaG9v4\u002BUli8n6ISJC5EXY0OI4GlUSS8QqnR3O8eyzOhKpylmHjjCBRggDAYH6h2bT0XGFVWuWc/z4UVKpcuIFhYysqKRubC0mG4LWjIz3Myt5EukNCC9mj\u002BlB3PFZcei1LrMSvUhosRaatjTySeNaLrS2c\u002BrUabbvaObwgT/Y88NeHpw0DSWCG1dsSX1EY3ID9nym31pns1p88c3mnKgXKhyDOnuJA2t\u002BwQssQdYivsF4gvFDPKDALSD0DcY3iAUrsHvXNB6eOZLxBzY29s1Pr9ChqPSNyMUXTadxCYzFDyAIhNAIJrAYI6hA8Adyt8FEBF80Fjg8Y/UNAG3QFZ5oLpkkXaYAzxeCQDAmwniWMIgQAbEytIMIIPlzDoUFapK9MwF0bxQr7IoKuGQSdAYuxoAXgHgW40d5k2HYEERk2BA8CxGKSMlUgNiVoOAuDw2AtRovgHVvrWfyvRMR8j8uwNx5s/OQfKjkLRHskGEkqlRkTpWqO/dBKFY5YjXm6CV6lzURDIYUFTpYkaF55QHDcxu2FBE27a5n7uxySpVQqmSVqj318VIr\u002Bl2xTrntN5iznRRjWDbuTwoQkliSQFJZXGz\u002BLQJG4LzEmTq5hHSZS6myFGOPKYD0yY0pR2feszbWgGhnTCxL07gjlOuQBKCVYEVhBAwKoxRHTJzWyKVaR1SriLt1RKUT\u002BrcFbPrM2omaxGcienYcxZODMRaMO2EnlV4LDCQ8UWTQDIim2S8ipSwTHMMIHQnC1UIJ374jsQFqz6x/OjLFn/tXxna5qdZHL9e/nstk5j3gO\u002B7SrPBEH07NIRPXaR31jXBZPSPxU9Nw7z/r7YcZEQc2bgAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-11-20T06:48:32.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "diagnose_setup.py",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\diagnose_setup.py",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\diagnose_setup.py",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\diagnose_setup.py",
+              "RelativeToolTip": "PGPortfolio-master\\diagnose_setup.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARtSURBVDhPdZRbbFRFGMd/M2fPdrc32V5ohbLQJhgJKheJQk0EwQhiosYAPhnRxNgQgeADXiBKUEi8JVWUCoqBKpEYDRCBhAeDL8olIveA2JZCoLT0QqHb3XPOnDOfD9sakDgvk/km3y\u002B/\u002BSb5w/\u002BsRy6//\u002BKYji9bqy423Rj9d\u002BPCW\u002B8\u002BzCysfqVj8c5bawCIiPpv7dWrb\u002ByJipLzTnhlui10VSwMcY3BDcLthbaoYdGo3\u002BaUavv1N93lFQPOYLK9dqt3a78CWNfXcF9laHeVJKi7QLH6brCWTomhrcU1eWDchkwvvTI4ubC7qDNw\u002BfF6irmFN5/aNGbrvjuAn3Y1\u002BEZ0vDMDx9p8/nJShGiUCXFMRLm9yf3F3aTwSYrl95tFDBiH6o6O5v0rDi8H\u002Bm8DbuhqsNcjV7Wf66PlqwP0ZyB33cP4lriGAq0JghDjWQJfyKk4YRCR68sRDJjHgF//BX5xbUlxzjLQE8U5d7afns37WTD/NWoqa\u002Bnp6eDnfd/T2tpCVVkNi557idIRFWzb8S0HjxzCZAzhym1n7D1zprNoZAZAA9VZ65CzDj1hnCiw1E\u002BZRcuF04wdXcs7KxuJx5Ls3XmI9Jg6WtrbSI9OI5EQZkOcUWUT4xNKup2D2ecBYq1BYkpcWQatQ5\u002BJURQISgQi8DwPL\u002Bfx\u002BMxnaG9v4\u002BUli8n6ISJC5EXY0OI4GlUSS8QqnR3O8eyzOhKpylmHjjCBRggDAYH6h2bT0XGFVWuWc/z4UVKpcuIFhYysqKRubC0mG4LWjIz3Myt5EukNCC9mj\u002BlB3PFZcei1LrMSvUhosRaatjTySeNaLrS2c\u002BrUabbvaObwgT/Y88NeHpw0DSWCG1dsSX1EY3ID9nym31pns1p88c3mnKgXKhyDOnuJA2t\u002BwQssQdYivsF4gvFDPKDALSD0DcY3iAUrsHvXNB6eOZLxBzY29s1Pr9ChqPSNyMUXTadxCYzFDyAIhNAIJrAYI6hA8Adyt8FEBF80Fjg8Y/UNAG3QFZ5oLpkkXaYAzxeCQDAmwniWMIgQAbEytIMIIPlzDoUFapK9MwF0bxQr7IoKuGQSdAYuxoAXgHgW40d5k2HYEERk2BA8CxGKSMlUgNiVoOAuDw2AtRovgHVvrWfyvRMR8j8uwNx5s/OQfKjkLRHskGEkqlRkTpWqO/dBKFY5YjXm6CV6lzURDIYUFTpYkaF55QHDcxu2FBE27a5n7uxySpVQqmSVqj318VIr\u002Bl2xTrntN5iznRRjWDbuTwoQkliSQFJZXGz\u002BLQJG4LzEmTq5hHSZS6myFGOPKYD0yY0pR2feszbWgGhnTCxL07gjlOuQBKCVYEVhBAwKoxRHTJzWyKVaR1SriLt1RKUT\u002BrcFbPrM2omaxGcienYcxZODMRaMO2EnlV4LDCQ8UWTQDIim2S8ipSwTHMMIHQnC1UIJ374jsQFqz6x/OjLFn/tXxna5qdZHL9e/nstk5j3gO\u002B7SrPBEH07NIRPXaR31jXBZPSPxU9Nw7z/r7YcZEQc2bgAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-11-20T13:32:01.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "README_FINAL_SUMMARY.txt",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\README_FINAL_SUMMARY.txt",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\README_FINAL_SUMMARY.txt",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\README_FINAL_SUMMARY.txt",
+              "RelativeToolTip": "PGPortfolio-master\\README_FINAL_SUMMARY.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-11-20T13:32:01.114Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SETUP_COMPLETED.txt",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\SETUP_COMPLETED.txt",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\SETUP_COMPLETED.txt",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\SETUP_COMPLETED.txt",
+              "RelativeToolTip": "PGPortfolio-master\\SETUP_COMPLETED.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-11-20T13:32:01.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "COMMANDS_CHEATSHEET.md",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\COMMANDS_CHEATSHEET.md",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\COMMANDS_CHEATSHEET.md",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\COMMANDS_CHEATSHEET.md",
+              "RelativeToolTip": "PGPortfolio-master\\COMMANDS_CHEATSHEET.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-20T13:32:01.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SETUP_COMPLETED.md",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\SETUP_COMPLETED.md",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\SETUP_COMPLETED.md",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\SETUP_COMPLETED.md",
+              "RelativeToolTip": "PGPortfolio-master\\SETUP_COMPLETED.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-20T13:32:01.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "START_HERE.txt",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\START_HERE.txt",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\START_HERE.txt",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\START_HERE.txt",
+              "RelativeToolTip": "PGPortfolio-master\\START_HERE.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-11-20T13:32:00.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SETUP_SUMMARY.md",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\SETUP_SUMMARY.md",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\SETUP_SUMMARY.md",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\SETUP_SUMMARY.md",
+              "RelativeToolTip": "PGPortfolio-master\\SETUP_SUMMARY.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-20T13:32:00.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "README_WINDOWS.md",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\README_WINDOWS.md",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\README_WINDOWS.md",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\README_WINDOWS.md",
+              "RelativeToolTip": "PGPortfolio-master\\README_WINDOWS.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-20T13:32:00.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "setup_environment.ps1",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\setup_environment.ps1",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\setup_environment.ps1",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\setup_environment.ps1",
+              "RelativeToolTip": "PGPortfolio-master\\setup_environment.ps1",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-11-20T13:32:00.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "setup_environment.bat",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\setup_environment.bat",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\setup_environment.bat",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\setup_environment.bat",
+              "RelativeToolTip": "PGPortfolio-master\\setup_environment.bat",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG7SURBVDhPzZTNSxtBHEBfPGipJ\u002B2iGFBjzJqu4nda0EO99CaCeBOEQlsotCCUakMO6sWrBz8QlZaWInjxXyjtQbNKwCqYUGObRKIosfFSKTazcXsQQWZXJOqhD4aB37x5cxu4TUzTlEc3xhHwD8bBdMkH18ORyLtOrLOr23YH00XAP2BmMplbWQH/gJl34WELuweHfF5eYz91JB9dim3wz8lf9G8Rfib2\u002BH18TGQ7xnJog1T66rBtMByNkzpMc3qaxdegkc0a7Ozuk9w7kFULtsEmzYNhGHhc5VRVOPG6KzEMQb2myqoF22A4GkOIDOGtH2zHdtiIRBFC8DUYklULtsGyUoWyEgUhBF\u002BWVskaBiVKEW2tjbJqwTZYqhTT0dZKg6ZypyCfWq\u002Bbx4/aiSeTvPIPsb4Z5lc6LV\u002BDy4LnVJY76e3pxFtdxeS7j8x8mKeuxsP49Cxz7z/JOlwVvEitWk1djYeXz55Qr91HVd2yArkEI9\u002B3WA2FGJuYIqivENR1WYFcgk/7eul/8RxdX\u002BHt635GR4ZlBXIJKveK8bU0s7gwz8MHPgoL78oKnH1fb\u002BLgyPnHscdMyJP/j39Wh9oGPXeiTgAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-11-20T13:32:00.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QUICK_START.md",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\QUICK_START.md",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\QUICK_START.md",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\QUICK_START.md",
+              "RelativeToolTip": "PGPortfolio-master\\QUICK_START.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-20T13:32:00.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ENVIRONMENT_SETUP.md",
+              "DocumentMoniker": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\ENVIRONMENT_SETUP.md",
+              "RelativeDocumentMoniker": "PGPortfolio-master\\ENVIRONMENT_SETUP.md",
+              "ToolTip": "C:\\Users\\86132\\Desktop\\PGPortfolio-master\\PGPortfolio-master\\ENVIRONMENT_SETUP.md",
+              "RelativeToolTip": "PGPortfolio-master\\ENVIRONMENT_SETUP.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-20T13:32:00.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{75504045-d02f-44e5-bf60-5f60df380e8b}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
